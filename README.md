@@ -18,6 +18,7 @@
 3. npm install express
 4. npm install mongoose
 5. npm install body-parser
+6. npm install express-list-endpoints
 ```
 
 ### Configurare il file .env

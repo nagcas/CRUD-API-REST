@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const { config } = require("dotenv");
 const bookRoutes = require("./routes/book.routes");
+const endpoints = require("express-list-endpoints");
 
 config();
 
@@ -23,4 +24,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server avviato alla porta ${port}`);
+    console.table(endpoints(app));
 });
