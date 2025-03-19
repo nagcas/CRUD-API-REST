@@ -15,14 +15,21 @@ const app = express();
 app.use(bodyParser.json()); // parser del body
 
 // connettiamo il database mongodb
-mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME });
-const db = mongoose.connection;
+mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME })
+    .then(() => console.log("MongoDB connesso"))
+    .catch((error) => console.error(error.message))
 
 app.use("/books", bookRoutes);
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(port, () => {
-    console.log(`Server avviato alla porta ${port}`);
-    console.table(endpoints(app));
-});
+try {
+    app.listen(PORT, () => {
+        console.clear();
+        console.log(`Server avviato alla porta ${PORT}`);
+        console.log("%c" + "Per chiudere il server ctrl-c", "color: #f0f");
+        console.table(endpoints(app));
+    });
+} catch (error) {
+    console.log(error.message);
+}
