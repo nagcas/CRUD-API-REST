@@ -27,7 +27,7 @@ try {
     app.listen(PORT, () => {
         console.clear();
         console.log(`Server avviato alla porta ${PORT}`);
-        console.log("%c" + "Per chiudere il server ctrl-c", "color: #f0f");
+        console.log("Per chiudere il server ctrl-c");
         console.table(endpoints(app));
     });
 } catch (error) {
